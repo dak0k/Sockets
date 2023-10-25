@@ -1,0 +1,169 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+namespace Sockets
+{
+	public class old
+	{
+		public static void Mawqeqwin(string[] args)
+		{
+			#region IP
+			//  IPAddress address1 = new IPAddress(new byte[]{127,0,0,1});
+			//  IPAddress address2 = IPAddress.Parse("127.0.0.1"); //IPv4
+
+
+
+			//  if(IPAddress.TryParse(address2.ToString(), out IPAddress address))
+			//  {
+
+			//  }
+			//  else
+			//  {
+
+			//  }
+			//  IPEndPoint endPoint = new IPEndPoint(address1, 8888); // :8888
+			#endregion
+
+
+			//TCP/IP
+			//UDP/IP
+
+
+			System.Console.WriteLine("Choose position: ");
+			switch (Console.ReadLine().ToLower())
+			{
+				case "server":
+					SimpleSocketServer.Start();
+					break;
+				case "client":
+					SimpleSocketClient.Start();
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
+
+
+	class SimpleSocketClient
+	{
+		private static string _name;
+		public static void Start()
+		{
+			System.Console.WriteLine("Your name: ");
+			_name = Console.ReadLine();
+			Console.Clear();
+
+			System.Console.WriteLine("Hello " + _name);
+			LaunchClient();
+		}
+		public static void LaunchClient()
+		{
+			IPAddress address1 = IPAddress.Parse("127.0.0.1");
+			IPEndPoint endPoint = new IPEndPoint(address1, 8888);
+
+			Socket clientSocket = new Socket(address1.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+
+
+			clientSocket.Connect(endPoint);
+
+			byte[] buffer = new byte[1024];
+
+			int bytesRead; // Size of buffer
+
+			bytesRead = clientSocket.Receive(buffer);
+
+			string welcome_message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+			System.Console.WriteLine(welcome_message);
+			System.Console.WriteLine();
+
+			while (true)
+			{
+				string sendMessage = _name + ":" + Console.ReadLine();
+				byte[] sendMessageBytes = Encoding.UTF8.GetBytes(sendMessage);
+
+				clientSocket.Send(sendMessageBytes);
+
+			}
+		}
+	}
+	class SimpleSocketServer
+	{
+		private static List<string> _serverData = new List<string>();
+
+		private static string _path = "serverData.txt";
+
+		public static void Start()
+		{
+			LaunchServer();
+		}
+
+
+
+		public static void LaunchServer()
+		{
+			IPAddress address1 = IPAddress.Parse("127.0.0.1");
+			IPEndPoint endPoint = new IPEndPoint(address1, 8888);
+
+			Socket serverSocket = new Socket(address1.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+			serverSocket.Bind(endPoint);// Привязка к serverSocket
+
+			serverSocket.Listen();
+
+
+			for (int i = 0; i <= 3; i++)
+			{
+				System.Console.WriteLine("Server runned. Waiting for connect ... ");
+				System.Console.WriteLine();
+			}
+
+			while (true)
+			{
+				Socket clientSocket = serverSocket.Accept();
+				System.Console.WriteLine("Client was connected");
+				System.Console.WriteLine();
+				string welcomeMessage = "Welcome to server";
+				System.Console.WriteLine();
+				byte[] welcomeMessageBytes = Encoding.UTF8.GetBytes(welcomeMessage);
+
+				clientSocket.Send(welcomeMessageBytes);
+
+				_ = Task.Run(() => HandleClient(clientSocket));
+			}
+		}
+
+		private static void HandleClient(Socket clientSocket)
+		{
+			byte[] buffer = new byte[1024];
+
+			int bytesRead = 0;
+
+			while ((bytesRead = clientSocket.Receive(buffer)) > 0)
+			{
+				string recivedMessage = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+				string[] recivedMessages = recivedMessage.Split(":");
+				System.Console.WriteLine($"[{recivedMessages[0]}]: {recivedMessages[1]}");
+
+				_serverData.Add(recivedMessage);
+
+				using (StreamWriter stream = new StreamWriter(_path))
+				{
+					foreach (var item in _serverData)
+					{
+						stream.WriteLine(item);
+					}
+				}
+
+
+			}
+		}
+	}
+
+}

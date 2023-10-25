@@ -1,0 +1,15 @@
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\bin\Debug\net6.0\Sockets.exe
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\bin\Debug\net6.0\Sockets.deps.json
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\bin\Debug\net6.0\Sockets.runtimeconfig.json
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\bin\Debug\net6.0\Sockets.dll
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\bin\Debug\net6.0\Sockets.pdb
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.csproj.AssemblyReference.cache
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.AssemblyInfoInputs.cache
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.AssemblyInfo.cs
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.csproj.CoreCompileInputs.cache
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.dll
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\refint\Sockets.dll
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.pdb
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\Sockets.genruntimeconfig.cache
+c:\Users\adaib\OneDrive\Документы\Github\CSharp-Study\Module 4\Sockets\Sockets\obj\Debug\net6.0\ref\Sockets.dll
